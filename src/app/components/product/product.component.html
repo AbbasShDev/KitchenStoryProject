@@ -1,20 +1,18 @@
 <section class="single-product-page">
   <div class="product-container">
     <div class="product-image-container">
-      <img
-        src="https://freepngimg.com/thumb/tomato/6-tomato-png-image.png"
-        alt=""
-      />
+      <img src="{{ product.image }}" alt="" />
     </div>
     <div class="product-details">
-      <h1>Potato</h1>
+      <h1>{{ product.name }}</h1>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit,
         minus! Consequuntur alias fugiat adipisci et nesciunt quo aspernatur
         quos, minima eius totam quas recusandae iste, odio consequatur deleniti
         dolorum officia.
       </p>
-      <div class="price">$20.99</div>
+      <div class="price">${{ product.price / 100 }}</div>
+      <button>Add to cart</button>
     </div>
   </div>
 </section>

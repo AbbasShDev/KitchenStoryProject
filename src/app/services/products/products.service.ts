@@ -66,4 +66,10 @@ export class ProductsService {
   getProductsList(): IProduct[] {
     return this.products;
   }
+
+  getProductById(id: string): IProduct {
+    return this.products.filter((prodcut) => {
+      return prodcut.id === id;
+    })[0];
+  }
 }

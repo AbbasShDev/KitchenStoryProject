@@ -9,8 +9,6 @@ import { IProduct } from 'src/app/interfaces/IProduct';
   styleUrls: ['./product.component.scss'],
 })
 export class ProductComponent implements OnInit {
-  products!: IProduct[];
-
   product!: IProduct;
 
   constructor(
@@ -20,9 +18,7 @@ export class ProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((param) => {
-      console.log(+param['id']);
-
-      //this.user = this.usersService.getUserById(+param['id'])
+      this.product = this.productsService.getProductById(param['id']);
     });
   }
 }
