@@ -5,62 +5,19 @@
   </div>
   <div class="products-center">
     <!-- single product -->
-    <article class="product">
+    <article class="product" *ngFor="let product of products">
       <div class="img-container">
-        <img
-          src="https://images.ctfassets.net/t4hp53d3asql/60jytsEtPNOG0SsvGAdPqp/399c0ade10f31c2bdfa1c76c55aaf65f/product5.png"
-          alt="prudct1"
-          class="product-img"
-        />
+        <img src="{{ product.image }}" alt="prudct1" class="product-img" />
         <button class="bag-btn">
           <i class="fas fa-shopping-cart"></i>add to cart
         </button>
       </div>
-      <h3>Lettuce</h3>
-      <h4>$12.99</h4>
+      <a [routerLink]="['/', product.id]">
+        <h3>{{ product.name }}</h3>
+      </a>
+      <h4>${{ product.price / 100 }}</h4>
     </article>
-    <article class="product">
-      <div class="img-container">
-        <img
-          src="https://images.ctfassets.net/t4hp53d3asql/60jytsEtPNOG0SsvGAdPqp/399c0ade10f31c2bdfa1c76c55aaf65f/product5.png"
-          alt="prudct1"
-          class="product-img"
-        />
-        <button class="bag-btn">
-          <i class="fas fa-shopping-cart"></i>add to cart
-        </button>
-      </div>
-      <h3>Lettuce</h3>
-      <h4>$12.99</h4>
-    </article>
-    <article class="product">
-      <div class="img-container">
-        <img
-          src="https://images.ctfassets.net/t4hp53d3asql/60jytsEtPNOG0SsvGAdPqp/399c0ade10f31c2bdfa1c76c55aaf65f/product5.png"
-          alt="prudct1"
-          class="product-img"
-        />
-        <button class="bag-btn">
-          <i class="fas fa-shopping-cart"></i>add to cart
-        </button>
-      </div>
-      <h3>Lettuce</h3>
-      <h4>$12.99</h4>
-    </article>
-    <article class="product">
-      <div class="img-container">
-        <img
-          src="https://images.ctfassets.net/t4hp53d3asql/60jytsEtPNOG0SsvGAdPqp/399c0ade10f31c2bdfa1c76c55aaf65f/product5.png"
-          alt="prudct1"
-          class="product-img"
-        />
-        <button class="bag-btn">
-          <i class="fas fa-shopping-cart"></i>add to cart
-        </button>
-      </div>
-      <h3>Lettuce</h3>
-      <h4>$12.99</h4>
-    </article>
+
     <!-- end of single product -->
   </div>
 </section>
