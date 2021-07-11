@@ -5,12 +5,12 @@
     </div>
     <div class="product-details">
       <h1>{{ product.name }}</h1>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit,
-        minus! Consequuntur alias fugiat adipisci et nesciunt quo aspernatur
-        quos, minima eius totam quas recusandae iste, odio consequatur deleniti
-        dolorum officia.
+      <p *ngIf="product.description; else noDescription">
+        {{ product.description }}
       </p>
+      <ng-template #noDescription>
+        <p>No description for this product</p>
+      </ng-template>
       <div class="price">${{ product.price / 100 }}</div>
       <button>Add to cart</button>
     </div>
