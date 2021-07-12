@@ -12,7 +12,9 @@
         <p>No description for this product</p>
       </ng-template>
       <div class="price">${{ product.price / 100 }}</div>
-      <button>Add to cart</button>
+      <a routerLink="../../purchase-item/{{ product.id }}">
+        <button>Purchase this item</button>
+      </a>
     </div>
   </div>
 </section>

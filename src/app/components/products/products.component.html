@@ -6,13 +6,13 @@
   <div class="products-center">
     <!-- single product -->
     <article class="product" *ngFor="let product of products">
-      <div class="img-container">
-        <img src="{{ product.image }}" alt="prudct1" class="product-img" />
-        <button class="bag-btn">
-          <i class="fas fa-shopping-cart"></i>add to cart
-        </button>
-      </div>
       <a routerLink="products/{{ product.id }}">
+        <div class="img-container">
+          <img src="{{ product.image }}" alt="prudct1" class="product-img" />
+          <!-- <button class="bag-btn">
+            <i class="fas fa-shopping-cart"></i>add to cart
+          </button> -->
+        </div>
         <h3>{{ product.name }}</h3>
       </a>
       <h4>${{ product.price / 100 }}</h4>
