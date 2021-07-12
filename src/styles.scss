@@ -52,6 +52,18 @@ body {
   color: var(--mainBlack);
 }
 
+.navbar .navbar-center .right-navbar a {
+  margin-left: 10px;
+  text-decoration: none;
+  font-weight: 700;
+  color: #222222;
+  text-transform: uppercase;
+  transition: color 0.3s ease-in-out;
+}
+.navbar .navbar-center .right-navbar a:hover {
+  color: var(--primaryColor);
+}
+
 // .cart-btn {
 //   position: relative;
 //   cursor: pointer;

@@ -18,8 +18,20 @@ export class PurchaseComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((param) => {
-      this.product = this.productsService.getProductById(param['id']);
-      console.log(this.product);
+      this.getProduct(param['id']);
+    });
+  }
+
+  getProduct(id: string): void {
+    this.activatedRoute.params.subscribe((param) => {
+      this.productsService
+        .getProductById(id)
+        .snapshotChanges()
+        .forEach((product) => {
+          let newProdcut: any = product.payload.toJSON();
+          newProdcut['id'] = product.key;
+          this.product = newProdcut as IProduct;
+        });
     });
   }
 }

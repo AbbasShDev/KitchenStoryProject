@@ -1,6 +1,6 @@
 import { ProductsService } from './../../services/products/products.service';
 import { IProduct } from './../../interfaces/IProduct';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-products',
@@ -12,6 +12,16 @@ export class ProductsComponent implements OnInit {
   constructor(private productsService: ProductsService) {}
 
   ngOnInit(): void {
-    this.products = this.productsService.getProductsList();
+    this.productsService
+      .getProductsList()
+      .snapshotChanges()
+      .forEach((productsSnapshot) => {
+        this.products = [];
+        productsSnapshot.forEach((productSnapshot) => {
+          let product: any = productSnapshot.payload.toJSON();
+          product['id'] = productSnapshot.key;
+          this.products.push(product as IProduct);
+        });
+      });
   }
 }
