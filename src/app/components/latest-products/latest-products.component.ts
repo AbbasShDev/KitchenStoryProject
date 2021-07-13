@@ -17,20 +17,17 @@ export class LatestProductsComponent implements OnInit {
 
   getLatestProducts(): void {
     this.productsService
-      .getProductsList()
+      .getLatestProductList()
       .snapshotChanges()
       .forEach((productsSnapshot) => {
         this.products = [];
-
-        for (
-          let i = productsSnapshot.length - 8;
-          i < productsSnapshot.length;
-          i++
-        ) {
-          let product: any = productsSnapshot[i].payload.toJSON();
-          product['id'] = productsSnapshot[i].key;
+        productsSnapshot.forEach((productSnapshot) => {
+          let product: any = productSnapshot.payload.toJSON();
+          product['id'] = productSnapshot.key;
           this.products.push(product as IProduct);
-        }
+        });
+
+        this.products.reverse();
       });
   }
 }

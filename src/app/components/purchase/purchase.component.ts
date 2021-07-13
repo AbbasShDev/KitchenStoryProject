@@ -23,15 +23,13 @@ export class PurchaseComponent implements OnInit {
   }
 
   getProduct(id: string): void {
-    this.activatedRoute.params.subscribe((param) => {
-      this.productsService
-        .getProductById(id)
-        .snapshotChanges()
-        .forEach((product) => {
-          let newProdcut: any = product.payload.toJSON();
-          newProdcut['id'] = product.key;
-          this.product = newProdcut as IProduct;
-        });
-    });
+    this.productsService
+      .getProductById(id)
+      .snapshotChanges()
+      .forEach((product) => {
+        let newProdcut: any = product.payload.toJSON();
+        newProdcut['id'] = product.key;
+        this.product = newProdcut as IProduct;
+      });
   }
 }

@@ -1,3 +1,6 @@
+import { AdminAddProductComponent } from './components/admin-add-product/admin-add-product.component';
+import { AdminAllProductsComponent } from './components/admin-all-products/admin-all-products.component';
+import { AdminComponent } from './components/admin/admin.component';
 import { ThankYouComponent } from './components/thank-you/thank-you.component';
 import { ProductComponent } from './components/product/product.component';
 import { HomeComponent } from './components/home/home.component';
@@ -11,6 +14,14 @@ const routes: Routes = [
   { path: 'products/:id', component: ProductComponent },
   { path: 'purchase-item/:id', component: PurchaseComponent },
   { path: 'thank-you', component: ThankYouComponent },
+  {
+    path: 'admin',
+    component: AdminComponent,
+    children: [
+      { path: '', component: AdminAllProductsComponent },
+      { path: 'add-product', component: AdminAddProductComponent },
+    ],
+  },
   { path: '', component: HomeComponent },
 ];
 

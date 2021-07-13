@@ -7,13 +7,20 @@ import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 })
 export class ProductsService {
   private productsList: AngularFireList<any>;
-
   constructor(private firebase: AngularFireDatabase) {
     this.productsList = this.firebase.list('products');
   }
 
   getProductsList() {
-    return this.productsList;
+    return this.firebase.list('products', (ref) =>
+      ref.orderByChild('createdAt')
+    );
+  }
+
+  getLatestProductList() {
+    return this.firebase.list('products', (ref) =>
+      ref.orderByChild('createdAt').limitToLast(8)
+    );
   }
 
   getProductById(id: string) {

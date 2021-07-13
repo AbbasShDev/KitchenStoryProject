@@ -1,13 +1,13 @@
-import { ProductsService } from './../../services/products/products.service';
-import { IProduct } from './../../interfaces/IProduct';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { IProduct } from 'src/app/interfaces/IProduct';
+import { ProductsService } from 'src/app/services/products/products.service';
 
 @Component({
-  selector: 'app-products',
-  templateUrl: './products.component.html',
-  styleUrls: ['./products.component.scss'],
+  selector: 'app-admin-all-products',
+  templateUrl: './admin-all-products.component.html',
+  styleUrls: ['./admin-all-products.component.scss'],
 })
-export class ProductsComponent implements OnInit {
+export class AdminAllProductsComponent implements OnInit {
   products!: IProduct[];
   constructor(private productsService: ProductsService) {}
 
@@ -26,6 +26,7 @@ export class ProductsComponent implements OnInit {
           product['id'] = productSnapshot.key;
           this.products.push(product as IProduct);
         });
+
         this.products.reverse();
       });
   }
