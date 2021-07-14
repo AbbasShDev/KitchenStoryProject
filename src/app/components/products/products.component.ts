@@ -11,6 +11,7 @@ import { Subscription } from 'rxjs';
 export class ProductsComponent implements OnInit, OnDestroy {
   products!: IProduct[];
   subscription!: Subscription;
+  fetchingData: boolean = true;
 
   constructor(private productsService: ProductsService) {}
 
@@ -30,6 +31,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
           this.products.push(product as IProduct);
         });
         this.products.reverse();
+        this.fetchingData = false;
       });
   }
 
