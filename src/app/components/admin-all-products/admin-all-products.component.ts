@@ -30,4 +30,10 @@ export class AdminAllProductsComponent implements OnInit {
         this.products.reverse();
       });
   }
+
+  deletProduct(id: string | undefined) {
+    if (confirm('Are sure you want to delete this product?')) {
+      this.productsService.deleteProduct(id);
+    }
+  }
 }

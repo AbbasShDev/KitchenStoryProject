@@ -8,6 +8,7 @@
           <th>Name</th>
           <th>Price</th>
           <th>Created At</th>
+          <th>Delete</th>
         </tr>
       </thead>
       <tbody>
@@ -19,6 +20,11 @@
           <td class="price">${{ product.price / 100 }}</td>
           <td class="createdAt">
             {{ product.createdAt | date: "dd/MM/YYYY-MM:ss" }}
+          </td>
+          <td>
+            <button class="delete-button" (click)="deletProduct(product.id)">
+              Delete
+            </button>
           </td>
         </tr>
       </tbody>

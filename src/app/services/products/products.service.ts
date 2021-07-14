@@ -26,7 +26,12 @@ export class ProductsService {
   getProductById(id: string) {
     return this.firebase.object('products/' + id);
   }
+
   addnewProduct(product: IProduct) {
     this.productsList.push(product);
+  }
+
+  deleteProduct(id: string | undefined) {
+    this.productsList.remove(id);
   }
 }
