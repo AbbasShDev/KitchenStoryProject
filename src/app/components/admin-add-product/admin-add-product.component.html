@@ -29,7 +29,13 @@
           <small *ngIf="price!.errors?.pattern">Price must be a number</small>
         </div>
       </div>
-      <button type="submit" [disabled]="addProductForm.invalid">Add</button>
+      <button
+        type="submit"
+        [ngClass]="{ 'button-loading': addingData }"
+        [disabled]="addProductForm.invalid"
+      >
+        <span class="button-text">Add</span>
+      </button>
       <span *ngIf="showSccuessMsg" class="success-msg">
         Product added succesfully
       </span>

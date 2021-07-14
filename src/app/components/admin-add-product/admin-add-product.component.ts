@@ -10,6 +10,7 @@ import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 export class AdminAddProductComponent implements OnInit {
   addProductForm!: FormGroup;
   showSccuessMsg: boolean = false;
+  addingData: boolean = false;
 
   constructor(private productsService: ProductsService) {}
 
@@ -39,11 +40,13 @@ export class AdminAddProductComponent implements OnInit {
 
   onSubmit() {
     if (this.addProductForm.valid) {
+      this.addingData = true;
       let newProduct = this.addProductForm.value;
       newProduct.createdAt = new Date().getTime();
       this.productsService.addnewProduct(newProduct);
       this.addProductForm.reset();
       this.showSccuessMsg = true;
+      this.addingData = false;
     }
   }
 }
