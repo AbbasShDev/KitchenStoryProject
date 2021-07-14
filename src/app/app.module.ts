@@ -18,6 +18,8 @@ import { environment } from 'src/environments/environment';
 import { AdminComponent } from './components/admin/admin.component';
 import { AdminAllProductsComponent } from './components/admin-all-products/admin-all-products.component';
 import { AdminAddProductComponent } from './components/admin-add-product/admin-add-product.component';
+import { AdminSignInComponent } from './components/admin-sign-in/admin-sign-in.component';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 @NgModule({
   declarations: [
@@ -33,11 +35,14 @@ import { AdminAddProductComponent } from './components/admin-add-product/admin-a
     AdminComponent,
     AdminAllProductsComponent,
     AdminAddProductComponent,
+    AdminSignInComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule,
+
     AngularFireDatabaseModule,
     FormsModule,
     ReactiveFormsModule,

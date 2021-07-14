@@ -1,3 +1,4 @@
+import { AdminSignInComponent } from './components/admin-sign-in/admin-sign-in.component';
 import { AdminAddProductComponent } from './components/admin-add-product/admin-add-product.component';
 import { AdminAllProductsComponent } from './components/admin-all-products/admin-all-products.component';
 import { AdminComponent } from './components/admin/admin.component';
@@ -8,6 +9,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProductsComponent } from './components/products/products.component';
 import { PurchaseComponent } from './components/purchase/purchase.component';
+import { OnlyLogedinGuard } from '../app/guard/auth/only-logedin.guard';
+import { NotLogedinGuard } from '../app/guard/auth/not-logedin.guard';
 
 const routes: Routes = [
   { path: 'products', component: ProductsComponent },
@@ -21,6 +24,12 @@ const routes: Routes = [
       { path: '', component: AdminAllProductsComponent },
       { path: 'add-product', component: AdminAddProductComponent },
     ],
+    canActivate: [OnlyLogedinGuard],
+  },
+  {
+    path: 'sign-in',
+    component: AdminSignInComponent,
+    canActivate: [NotLogedinGuard],
   },
   { path: '', component: HomeComponent },
 ];
