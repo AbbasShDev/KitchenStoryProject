@@ -14,7 +14,7 @@ import { ProductComponent } from './components/product/product.component';
 import { PurchaseComponent } from './components/purchase/purchase.component';
 import { ThankYouComponent } from './components/thank-you/thank-you.component';
 import { LatestProductsComponent } from './components/latest-products/latest-products.component';
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment.prod';
 import { AdminComponent } from './components/admin/admin.component';
 import { AdminAllProductsComponent } from './components/admin-all-products/admin-all-products.component';
 import { AdminAddProductComponent } from './components/admin-add-product/admin-add-product.component';
