@@ -9,6 +9,7 @@ import { ProductsService } from 'src/app/services/products/products.service';
 })
 export class AdminAllProductsComponent implements OnInit {
   products!: IProduct[];
+  isLoadingProducts: boolean = true;
   constructor(private productsService: ProductsService) {}
 
   ngOnInit(): void {
@@ -28,6 +29,7 @@ export class AdminAllProductsComponent implements OnInit {
         });
 
         this.products.reverse();
+        this.isLoadingProducts = false;
       });
   }
 

@@ -12,6 +12,10 @@
         </tr>
       </thead>
       <tbody>
+        <!-- show indector for fetching data -->
+        <tr class="loading" *ngIf="isLoadingProducts">
+          <td colspan="5">Fetching data...</td>
+        </tr>
         <tr *ngFor="let product of products">
           <td class="image">
             <img src="{{ product.image }}" alt="product image" />
