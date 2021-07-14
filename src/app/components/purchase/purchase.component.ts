@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { IProduct } from 'src/app/interfaces/IProduct';
 import { ActivatedRoute } from '@angular/router';
 import { ProductsService } from 'src/app/services/products/products.service';
@@ -8,8 +9,9 @@ import { ProductsService } from 'src/app/services/products/products.service';
   templateUrl: './purchase.component.html',
   styleUrls: ['./purchase.component.scss'],
 })
-export class PurchaseComponent implements OnInit {
+export class PurchaseComponent implements OnInit, OnDestroy {
   product!: IProduct;
+  subscription!: Subscription;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -23,13 +25,17 @@ export class PurchaseComponent implements OnInit {
   }
 
   getProduct(id: string): void {
-    this.productsService
+    this.subscription = this.productsService
       .getProductById(id)
       .snapshotChanges()
-      .forEach((product) => {
+      .subscribe((product) => {
         let newProdcut: any = product.payload.toJSON();
         newProdcut['id'] = product.key;
         this.product = newProdcut as IProduct;
       });
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }

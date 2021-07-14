@@ -1,14 +1,17 @@
 import { ProductsService } from './../../services/products/products.service';
 import { IProduct } from './../../interfaces/IProduct';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss'],
 })
-export class ProductsComponent implements OnInit {
+export class ProductsComponent implements OnInit, OnDestroy {
   products!: IProduct[];
+  subscription!: Subscription;
+
   constructor(private productsService: ProductsService) {}
 
   ngOnInit(): void {
@@ -16,10 +19,10 @@ export class ProductsComponent implements OnInit {
   }
 
   getAllProducts(): void {
-    this.productsService
+    this.subscription = this.productsService
       .getProductsList()
       .snapshotChanges()
-      .forEach((productsSnapshot) => {
+      .subscribe((productsSnapshot) => {
         this.products = [];
         productsSnapshot.forEach((productSnapshot) => {
           let product: any = productSnapshot.payload.toJSON();
@@ -28,5 +31,9 @@ export class ProductsComponent implements OnInit {
         });
         this.products.reverse();
       });
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }
